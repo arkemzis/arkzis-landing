@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARKZIS — Connect without limits</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -15,88 +15,187 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 24px;
+    padding: 24px 16px 60px;
     overflow-x: hidden;
+    position: relative;
   }
   .glow {
-    position: fixed;
-    top: -200px;
-    left: 50%;
+    position: fixed; top: -300px; left: 50%;
     transform: translateX(-50%);
-    width: 800px;
-    height: 800px;
+    width: 900px; height: 900px;
     background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 60%);
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
+    filter: blur(80px); pointer-events: none; z-index: 0;
+    animation: pulse 6s ease-in-out infinite;
   }
-  .container { position: relative; z-index: 1; text-align: center; max-width: 480px; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: translateX(-50%) scale(1); }
+    50% { opacity: 0.7; transform: translateX(-50%) scale(1.1); }
+  }
+  .glow2 {
+    position: fixed; bottom: -300px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 60%);
+    filter: blur(80px); pointer-events: none; z-index: 0;
+  }
+  .container { position: relative; z-index: 1; text-align: center; max-width: 520px; width: 100%; padding-top: 40px; }
+  .fade-in { animation: fadeInUp 0.8s ease-out both; }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
   .logo {
-    font-size: 64px;
-    font-weight: 800;
+    font-size: 72px; font-weight: 900;
     background: linear-gradient(135deg, #A855F7, #7C3AED, #5B21B6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -2px;
-    margin-bottom: 8px;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; letter-spacing: -3px;
+    margin-bottom: 12px; line-height: 1;
   }
   .slogan {
-    font-size: 16px;
-    color: #A855F7;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 48px;
-    font-weight: 600;
+    font-size: 14px; color: #A855F7; letter-spacing: 5px;
+    text-transform: uppercase; margin-bottom: 56px; font-weight: 600;
   }
   .btn {
-    display: inline-block;
-    padding: 18px 48px;
+    display: inline-block; padding: 20px 56px;
     background: linear-gradient(135deg, #7C3AED, #A855F7);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 999px;
-    font-weight: 700;
-    font-size: 17px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    color: #fff; text-decoration: none; border-radius: 999px;
+    font-weight: 700; font-size: 17px;
+    transition: all 0.3s;
     box-shadow: 0 8px 32px rgba(124,58,237,0.4);
-    margin-bottom: 20px;
+    margin-bottom: 16px; position: relative; overflow: hidden;
   }
   .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(124,58,237,0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(124,58,237,0.7);
   }
-  .version { font-size: 13px; color: #71717A; margin-top: 8px; }
+  .version {
+    font-size: 13px; color: #71717A; margin-bottom: 8px;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .version span.dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: #7C3AED; display: inline-block;
+  }
+  .badge-new {
+    display: inline-block;
+    background: linear-gradient(135deg, #7C3AED, #A855F7);
+    color: #fff; font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 999px;
+  }
   .features {
-    margin-top: 64px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    font-size: 14px;
-    color: #A1A1AA;
+    margin-top: 56px; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 10px;
+    font-size: 13px; color: #D4D4D8;
   }
   .features span {
-    padding: 10px 16px;
-    background: rgba(124,58,237,0.1);
+    padding: 12px 14px;
+    background: rgba(124,58,237,0.08);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 14px; transition: all 0.3s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .features span:hover {
+    background: rgba(124,58,237,0.2);
+    border-color: rgba(124,58,237,0.5);
+    transform: translateY(-2px);
+  }
+  .quote {
+    margin-top: 64px; padding: 28px 24px;
+    background: rgba(124,58,237,0.08);
+    border: 1px solid rgba(124,58,237,0.25);
+    border-radius: 20px; text-align: left;
+  }
+  .quote-text {
+    font-size: 15px; line-height: 1.6;
+    color: #E4E4E7; font-style: italic; margin-bottom: 14px;
+  }
+  .quote-author { font-size: 13px; color: #A855F7; font-weight: 600; }
+  .socials {
+    margin-top: 48px; display: flex; gap: 12px;
+    justify-content: center; flex-wrap: wrap;
+  }
+  .social {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; color: #E4E4E7;
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: all 0.3s;
+  }
+  .social:hover {
+    background: rgba(124,58,237,0.2);
+    border-color: rgba(124,58,237,0.5);
+    transform: translateY(-2px);
+  }
+  .cta-bottom {
+    margin-top: 64px; padding: 36px 24px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(168,85,247,0.08));
     border: 1px solid rgba(124,58,237,0.3);
-    border-radius: 12px;
+    border-radius: 24px;
+  }
+  .cta-title {
+    font-size: 22px; font-weight: 800; margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff, #A855F7);
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+  .cta-sub { font-size: 13px; color: #A1A1AA; margin-bottom: 20px; }
+  footer {
+    margin-top: 64px; font-size: 12px;
+    color: #52525B; line-height: 1.8; text-align: center;
+  }
+  footer a { color: #A855F7; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  @media (max-width: 400px) {
+    .logo { font-size: 56px; }
+    .btn { padding: 18px 40px; font-size: 15px; }
   }
 </style>
 </head>
 <body>
   <div class="glow"></div>
+  <div class="glow2"></div>
   <div class="container">
-    <div class="logo">ARKZIS</div>
-    <div class="slogan">Connect without limits</div>
-    <a href="https://github.com/arkemzis/arkzis/releases/latest" class="btn" target="_blank">📱 Скачать для Android</a>
-    <div class="version">Бета · 10.10.2026</div>
-    <div class="features">
-      <span>🔒 E2E шифрование</span>
+    <div class="logo fade-in">ARKZIS</div>
+    <div class="slogan fade-in" style="animation-delay: 0.1s;">Connect without limits</div>
+    <a href="https://github.com/arkemzis/arkzis/releases/latest" class="btn fade-in" target="_blank" style="animation-delay: 0.2s;">📱 Скачать для Android</a>
+    <div class="version fade-in" style="animation-delay: 0.3s;">
+      <span>v0.3</span>
+      <span class="dot"></span>
+      <span>93 МБ</span>
+      <span class="dot"></span>
+      <span>Android 7.0+</span>
+      <span class="badge-new">БЕТА</span>
+    </div>
+    <div class="features fade-in" style="animation-delay: 0.4s;">
+      <span>🎤 Голосовые</span>
+      <span>⭕ Кружочки</span>
+      <span>📞 Звонки</span>
+      <span>🎥 Видеозвонки</span>
+      <span>🔐 E2E шифрование</span>
       <span>💬 Личные чаты</span>
       <span>👥 Группы</span>
       <span>📸 Сторис 24ч</span>
     </div>
+    <div class="quote fade-in" style="animation-delay: 0.5s;">
+      <div class="quote-text">«Мне 18. Я сделал ARKZIS за 4 дня. Голосовые, кружочки, звонки — всё работает. Попробуй и напиши, что думаешь.»</div>
+      <div class="quote-author">— Артём, разработчик ARKZIS</div>
+    </div>
+    <div class="socials fade-in" style="animation-delay: 0.6s;">
+      <a href="https://www.tiktok.com/@arkemzis" class="social" target="_blank">🎵 TikTok</a>
+      <a href="https://github.com/arkemzis" class="social" target="_blank">🐙 GitHub</a>
+    </div>
+    <div class="cta-bottom fade-in" style="animation-delay: 0.7s;">
+      <div class="cta-title">Попробуй ARKZIS сегодня</div>
+      <div class="cta-sub">Бесплатно · Без рекламы · Без слежки</div>
+      <a href="https://github.com/arkemzis/arkzis/releases/latest" class="btn" target="_blank">📱 Скачать APK</a>
+    </div>
+    <footer>
+      © 2026 ARKZIS · Сделано с 💜 в России<br>
+      <a href="https://github.com/arkemzis/arkzis" target="_blank">GitHub</a> · 
+      <a href="https://github.com/arkemzis/arkzis/releases" target="_blank">Релизы</a>
+    </footer>
   </div>
 </body>
 </html>
